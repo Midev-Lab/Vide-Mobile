@@ -47,6 +47,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>VIDE needs access to your photos so you can attach images to study sessions.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>VIDE needs camera access so you can take photos of notes and documents.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

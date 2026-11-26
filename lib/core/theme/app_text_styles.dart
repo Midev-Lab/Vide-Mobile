@@ -197,6 +197,71 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const attachSheetTitle = TextStyle(
+    fontFamily: _fraunces,
+    fontSize: 22,
+    height: 28 / 22,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const attachSheetHeaderSubtitle = TextStyle(
+    fontFamily: _inter,
+    fontSize: 14,
+    height: 20 / 14,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const attachSheetSectionLabel = TextStyle(
+    fontFamily: _inter,
+    fontSize: 13,
+    height: 18 / 13,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 1.2,
+  );
+
+  static const attachSheetCameraTitle = TextStyle(
+    fontFamily: _fraunces,
+    fontSize: 20,
+    height: 25 / 20,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const attachSheetCameraSubtitle = TextStyle(
+    fontFamily: _inter,
+    fontSize: 13,
+    height: 18 / 13,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const attachSheetActionLabel = TextStyle(
+    fontFamily: _inter,
+    fontSize: 16,
+    height: 22 / 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const attachSheetChatSubtitle = TextStyle(
+    fontFamily: _inter,
+    fontSize: 13,
+    height: 18 / 13,
+    fontWeight: FontWeight.w400,
+  );
+
+  // ─── Attach scanner ────────────────────────────────────────────────────
+  static const attachSheetAddChatTitle = TextStyle(
+    fontFamily: _inter,
+    fontSize: 16,
+    height: 22 / 16,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const attachSheetScannerLabel = TextStyle(
+    fontFamily: _inter,
+    fontSize: 14,
+    height: 20 / 14,
+    fontWeight: FontWeight.w600,
+  );
+
   static const drawerItem = TextStyle(
     fontFamily: _inter,
     fontSize: 15,
@@ -224,5 +289,64 @@ class AppTextStyles {
     height: 18 / 12,
     fontWeight: FontWeight.w400,
     fontFeatures: [FontFeature.disable('liga'), FontFeature.disable('calt')],
+  );
+
+  // ─── Focus timer ────────────────────────────────────────────────────────
+  static const focusPopoverTitle = TextStyle(
+    fontFamily: _fraunces,
+    fontSize: 24,
+    height: 30 / 24,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const focusPopoverDescription = TextStyle(
+    fontFamily: _inter,
+    fontSize: 15,
+    height: 22 / 15,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const focusPopoverStepperValue = TextStyle(
+    fontFamily: _fraunces,
+    fontSize: 40,
+    height: 48 / 40,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const focusPopoverTimerValue = TextStyle(
+    fontFamily: _fraunces,
+    fontSize: 48,
+    height: 56 / 48,
+    fontWeight: FontWeight.w500,
+    fontFeatures: [FontFeature.tabularFigures()],
+  );
+
+  static const focusPopoverPreset = TextStyle(
+    fontFamily: _inter,
+    fontSize: 13,
+    height: 18 / 13,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const focusTimerPill = TextStyle(
+    fontFamily: _inter,
+    fontSize: 14,
+    height: 18 / 14,
+    fontWeight: FontWeight.w600,
+    fontFeatures: [FontFeature.tabularFigures()],
+  );
+
+  static const focusPopoverAction = TextStyle(
+    fontFamily: _fraunces,
+    fontSize: 18,
+    height: 24 / 18,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const focusPopoverMeta = TextStyle(
+    fontFamily: _inter,
+    fontSize: 14,
+    height: 20 / 14,
+    fontWeight: FontWeight.w400,
   );
 }

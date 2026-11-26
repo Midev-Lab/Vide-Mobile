@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/theme.dart';
 import '../../../shared/dashboard/dashboard.dart';
 import '../../../shared/widgets/widgets.dart';
+import '../attach/attach_sheet.dart';
 
 class SidebarActiveChatScreen extends StatefulWidget {
   const SidebarActiveChatScreen({super.key});
@@ -13,13 +14,30 @@ class SidebarActiveChatScreen extends StatefulWidget {
 }
 
 class _SidebarActiveChatScreenState extends State<SidebarActiveChatScreen> {
-  static const _clockAsset = 'assets/images/icons/clock_12.png';
   static const _plusAsset = 'assets/images/icons/plus_18.png';
   static const _waveAsset = 'assets/images/icons/wave_18.png';
   static const _chevronAsset = 'assets/images/icons/chevron_down_12.png';
   static const _arrowUpAsset = 'assets/images/icons/arrow_up_15.png';
 
   String _selectedMode = 'Tutor';
+
+  Future<void> _openAttachSheet() async {
+    FocusScope.of(context).unfocus();
+    await Future<void>.delayed(const Duration(milliseconds: 50));
+    if (!mounted) return;
+
+    await showAttachSheet(
+      context: context,
+      onCameraPicked: () {},
+      onPhotosPicked: () {},
+      onFilesPicked: () {},
+      onAddChat: () {},
+      onLimitReached: () {},
+      onRecentPhotoPicked: (_) {},
+      onPhotoPicked: (_) {},
+      onFilePicked: (_) {},
+    );
+  }
 
   Future<void> _openStudyModeSheet() async {
     final mode = await showStudyModeSheet(
@@ -43,14 +61,7 @@ class _SidebarActiveChatScreenState extends State<SidebarActiveChatScreen> {
               DashboardHeader(
                 title: 'New study session',
                 subtitle: '$_selectedMode Mode • Today',
-                timer: '25:00',
                 onMenuTap: () => AppShell.openDrawer(context),
-                timerIcon: Image.asset(
-                  _clockAsset,
-                  width: AppSizes.iconSmall,
-                  height: AppSizes.iconSmall,
-                  fit: BoxFit.contain,
-                ),
               ),
               const SizedBox(height: AppSpacing.emptyStateTopGap),
               const Align(
@@ -67,6 +78,7 @@ class _SidebarActiveChatScreenState extends State<SidebarActiveChatScreen> {
             child: ChatComposer(
               mode: _selectedMode,
               onModeTap: _openStudyModeSheet,
+              onAttach: _openAttachSheet,
               bottomPadding: AppSpacing.space5,
               attachIcon: Image.asset(
                 _plusAsset,

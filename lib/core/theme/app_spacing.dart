@@ -21,6 +21,17 @@ class AppSpacing {
   static const double emptyStateTopGap = 266;
   static const double sidebarRecentsGap = 34;
   static const double sidebarPopupGap = 28;
+
+  // ─── Attach sheet revision ────────────────────────────────────────────
+  static const double attachSheetPadding = 20;
+  static const double attachSheetHeaderToBento = 20;
+  static const double attachSheetBentoToRecent = 24;
+  static const double attachSheetRecentLabelToStrip = 12;
+  static const double attachSheetStripToAddChat = 20;
+  static const double attachSheetBottomPadding = 16;
+
+  // ─── Focus timer ──────────────────────────────────────────────────────
+  static const double focusTimerPillIconGap = 6;
 }
 
 class AppSizes {
@@ -73,4 +84,57 @@ class AppSizes {
   static const double buttonMinTapTarget = 48;
   static const double buttonSpinnerSize = 20;
   static const double buttonSpinnerStroke = 2;
+
+  // ─── Attach sheet ──────────────────────────────────────────────────────
+  static const double attachSheetHandleWidth = 40;
+  static const double attachSheetHandleHeight = 4;
+  static const double attachSheetCloseButton = 44;
+  static const double attachSheetBentoHeight = 208;
+  static const double attachSheetBentoGap = 12;
+  static const double attachSheetSideTileHeight = 98;
+  static const double attachSheetCameraIcon = 32;
+  static const double attachSheetTileIcon = 28;
+  static const double attachSheetRowHeight = 56;
+  static const double attachSheetAddChatHeight = 72;
+  static const double attachSheetAddChatIcon = 40;
+  static const double attachSheetBorderWidth = 1.5;
+  static const double attachSheetQuotaPillHeight = 24;
+  static const double attachSheetCompactLayoutWidth = 280;
+  static const double attachSheetCompactTextScale = 1.2;
+  static const double attachSheetThumbnail = 76;
+  static const int attachSheetRecentPhotosCount = 12;
+
+  // ─── Attach sheet revision ────────────────────────────────────────────
+  static const double attachSheetMaxHeightFactor = 0.92;
+  static const double attachSheetBentoHeightFactor = 0.26;
+  static const double attachSheetBentoMinHeight = 180;
+  static const double attachSheetBentoMaxHeight = 232;
+  static const double attachSheetScannerControlSize = 48;
+  static const double attachSheetScannerShutterSize = 72;
+  static const double attachSheetScannerCloseSize = 44;
+  static const double attachSheetScannerShutterBorderWidth = 4;
+  static const double attachSheetScannerShutterGap = 6;
+  static const double attachSheetScannerShutterInnerSize = 52;
+  static const double attachSheetAddChatIconCircle = 44;
+
+  // ─── Focus timer ────────────────────────────────────────────────────────
+  static const double focusTimerHeaderSlotWidth = 88;
+  static const double focusTimerButtonSize = 44;
+  static const double focusTimerPillHeight = 32;
+  static const double focusTimerPillMaxWidth = 84;
+  static const double focusTimerPillHorizontalPadding = 10;
+  static const double focusTimerPillIconSize = 16;
+  static const double focusPopoverHorizontalMargin = 16;
+  static const double focusPopoverMaxWidth = 360;
+  static const double focusPopoverAnchorGap = 8;
+  static const double focusPopoverBottomMargin = 16;
+  static const double focusPopoverPadding = 24;
+  static const double focusPopoverPresetHeight = 52;
+  static const double focusPopoverPresetGap = 8;
+  static const double focusPopoverStepperButtonSize = 48;
+  static const double focusPopoverStepperGap = 12;
+  static const double focusPopoverStartButtonHeight = 56;
+  static const double focusPopoverBorderWidth = 1;
+  static const double focusPopoverShadowBlur = 24;
+  static const double focusPopoverShadowOffset = 8;
 }
