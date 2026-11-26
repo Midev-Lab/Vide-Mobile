@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/theme.dart';
+import '../../features/focus/widgets/focus_timer_header_control.dart';
 import 'app_icon.dart';
+import 'app_pressable.dart';
 
 class DashboardHeader extends StatelessWidget {
   const DashboardHeader({
     super.key,
     required this.title,
     required this.subtitle,
-    required this.timer,
     this.onMenuTap,
-    this.onAddTap,
-    this.timerIcon,
   });
 
   final String title;
   final String subtitle;
-  final String timer;
   final VoidCallback? onMenuTap;
-  final VoidCallback? onAddTap;
-  final Widget? timerIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -31,60 +27,51 @@ class DashboardHeader extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.space16),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              HeaderIcon(icon: AppIcons.menu, onTap: onMenuTap),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    title,
-                    style: AppTextStyles.dashboardTitle.copyWith(
-                      color: colors.green,
-                    ),
-                    textAlign: TextAlign.center,
+              SizedBox(
+                width: AppSizes.focusTimerHeaderSlotWidth,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: HeaderIcon(
+                    icon: AppIcons.menu,
+                    semanticLabel: 'Open menu',
+                    onTap: onMenuTap,
                   ),
-                  const SizedBox(height: AppSpacing.space1),
-                  Text(
-                    subtitle,
-                    style: AppTextStyles.uiCaption.copyWith(color: colors.gray),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                ),
               ),
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.space8,
-                      vertical: AppSpacing.space4,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.dashboardTitle.copyWith(
+                        color: colors.green,
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                      color: colors.card,
-                      borderRadius: AppRadii.pill,
-                      border: Border.all(color: colors.line),
+                    const SizedBox(height: AppSpacing.space1),
+                    Text(
+                      subtitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.uiCaption.copyWith(
+                        color: colors.gray,
+                      ),
                     ),
-                    child: Row(
-                      children: [
-                        timerIcon ??
-                            AppIcon(
-                              AppIcons.clock,
-                              size: AppSizes.iconSmall,
-                              color: colors.green,
-                            ),
-                        const SizedBox(width: AppSpacing.space4),
-                        Text(
-                          timer,
-                          style: AppTextStyles.uiLabel.copyWith(
-                            color: colors.green,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: AppSpacing.space8),
-                  HeaderIcon(icon: AppIcons.plus, onTap: onAddTap),
-                ],
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: AppSizes.focusTimerHeaderSlotWidth,
+                child: const Align(
+                  alignment: Alignment.centerRight,
+                  child: FocusTimerHeaderControl(),
+                ),
               ),
             ],
           ),
@@ -95,28 +82,38 @@ class DashboardHeader extends StatelessWidget {
 }
 
 class HeaderIcon extends StatelessWidget {
-  const HeaderIcon({super.key, required this.icon, this.color, this.onTap});
+  const HeaderIcon({
+    super.key,
+    required this.icon,
+    this.color,
+    this.onTap,
+    this.semanticLabel,
+  });
 
   final IconData icon;
   final Color? color;
   final VoidCallback? onTap;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: SizedBox(
-        width: AppSizes.headerIconTapTarget,
-        height: AppSizes.headerIconTapTarget,
-        child: Center(
-          child: AppIcon(
-            icon,
-            size: AppSizes.navIcon,
-            color: color ?? AppColors.of(context).green,
-          ),
+    final content = SizedBox(
+      width: AppSizes.buttonMinTapTarget,
+      height: AppSizes.buttonMinTapTarget,
+      child: Center(
+        child: AppIcon(
+          icon,
+          size: AppSizes.navIcon,
+          color: color ?? AppColors.of(context).green,
         ),
       ),
+    );
+    if (onTap == null) return content;
+
+    return AppPressable(
+      onTap: onTap,
+      semanticLabel: semanticLabel,
+      child: content,
     );
   }
 }

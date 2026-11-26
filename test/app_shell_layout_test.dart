@@ -9,7 +9,7 @@ void main() {
     tester,
   ) async {
     final router = GoRouter(
-      initialLocation: '/chat',
+      initialLocation: '/other',
       routes: [
         ShellRoute(
           builder: (context, state, child) =>
@@ -18,6 +18,12 @@ void main() {
             GoRoute(
               path: '/chat',
               name: 'chat',
+              builder: (context, state) =>
+                  const Scaffold(body: Center(child: Text('Chat destination'))),
+            ),
+            GoRoute(
+              path: '/other',
+              name: 'other',
               builder: (context, state) => const _DrawerTestScreen(),
             ),
           ],
@@ -59,6 +65,11 @@ void main() {
     await tester.pump(const Duration(milliseconds: 140));
     expect(tester.takeException(), isNull);
     await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+    await tester.tap(find.text('New study'));
+    await tester.pumpAndSettle();
+    expect(find.text('Chat destination'), findsOneWidget);
+    expect(router.routeInformationProvider.value.uri.path, '/chat');
     expect(tester.takeException(), isNull);
   });
 }

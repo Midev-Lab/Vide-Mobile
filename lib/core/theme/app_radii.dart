@@ -19,6 +19,8 @@ class AppRadii {
   static const double tagValue = 4;
   static const double sheetsTopSmallValue = 24;
   static const double sheetsTopLargeValue = 32;
+  static const double attachSheetTileValue = 24;
+  static const double attachSheetThumbnailValue = 18;
 
   // ─── BorderRadius helpers ────────────────────────────────────────────
   static final pill = BorderRadius.circular(pillValue);
@@ -34,6 +36,22 @@ class AppRadii {
   static final row = BorderRadius.circular(rowValue);
   static final sidebarPopup = BorderRadius.circular(sidebarPopupValue);
   static final tag = BorderRadius.circular(tagValue);
+  static final attachSheetTile = BorderRadius.circular(attachSheetTileValue);
+  static final attachSheetThumbnail = BorderRadius.circular(
+    attachSheetThumbnailValue,
+  );
+
+  // ─── Focus timer ────────────────────────────────────────────────────────
+  static const double focusPopoverValue = 28;
+  static const double focusPresetValue = 18;
+  static const double focusActionValue = 20;
+  static const double focusStepperValue = 18;
+  static const double focusTimerPillValue = 16;
+  static final focusPopover = BorderRadius.circular(focusPopoverValue);
+  static final focusPreset = BorderRadius.circular(focusPresetValue);
+  static final focusAction = BorderRadius.circular(focusActionValue);
+  static final focusStepper = BorderRadius.circular(focusStepperValue);
+  static final focusTimerPill = BorderRadius.circular(focusTimerPillValue);
 
   /// Bottom-sheet top corners (small variant – 24 px).
   static const sheetsTopSmall = BorderRadius.only(

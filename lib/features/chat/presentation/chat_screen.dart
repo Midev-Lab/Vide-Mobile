@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/theme.dart';
 import '../../../shared/dashboard/dashboard.dart';
 import '../../../shared/widgets/widgets.dart';
+import '../attach/attach_sheet.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -12,27 +13,48 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  bool _isAttachMenuOpen = false;
   String _selectedMode = 'Tutor';
 
   void _openDrawer() {
-    if (_isAttachMenuOpen) {
-      setState(() => _isAttachMenuOpen = false);
-    }
     AppShell.openDrawer(context);
   }
 
-  void _toggleAttachMenu() {
-    final opening = !_isAttachMenuOpen;
-    setState(() => _isAttachMenuOpen = opening);
-  }
+  Future<void> _openAttachSheet() async {
+    // Dismiss keyboard before opening the sheet.
+    FocusScope.of(context).unfocus();
+    await Future<void>.delayed(const Duration(milliseconds: 50));
+    if (!mounted) return;
 
-  void _closeAttachMenu() {
-    setState(() => _isAttachMenuOpen = false);
+    await showAttachSheet(
+      context: context,
+      onCameraPicked: () {
+        // TODO: Existing camera → photo attach handler.
+      },
+      onPhotosPicked: () {
+        // TODO: Existing "Add photos" handler.
+      },
+      onFilesPicked: () {
+        // TODO: Existing "Upload a file" handler.
+      },
+      onAddChat: () {
+        // TODO: Existing "Add chat" handler.
+      },
+      onLimitReached: () {
+        // TODO: Existing limit-state UI handler.
+      },
+      onRecentPhotoPicked: (xFile) {
+        // TODO: Attach the picked photo through existing photo flow.
+      },
+      onPhotoPicked: (xFile) {
+        // TODO: Attach the selected photo through existing photo flow.
+      },
+      onFilePicked: (file) {
+        // TODO: Upload the selected file through the existing upload flow.
+      },
+    );
   }
 
   Future<void> _openStudyModeSheet() async {
-    _closeAttachMenu();
     final mode = await showStudyModeSheet(
       context: context,
       selectedMode: _selectedMode,
@@ -58,7 +80,6 @@ class _ChatScreenState extends State<ChatScreen> {
             DashboardHeader(
               title: 'New study session',
               subtitle: 'Osogbo (UNIOSUN): 29°C',
-              timer: '25:00',
               onMenuTap: _openDrawer,
             ),
             Expanded(
@@ -73,23 +94,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: const Center(child: ChatEmptyState()),
               ),
             ),
-            if (_isAttachMenuOpen)
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: AppSpacing.space16,
-                  bottom: AppSpacing.space20,
-                ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: AttachMenu(
-                    remainingChats: 1,
-                    onSelected: (_) => _closeAttachMenu(),
-                  ),
-                ),
-              ),
             ChatComposer(
               mode: _selectedMode,
-              onAttach: _toggleAttachMenu,
+              onAttach: _openAttachSheet,
               onModeTap: _openStudyModeSheet,
             ),
           ],

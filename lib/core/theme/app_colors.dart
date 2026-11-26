@@ -27,6 +27,7 @@ class AppColors {
     required this.white,
     required this.overlayFill,
     required this.overlayStroke,
+    required this.cameraScannerBackground,
   });
 
   // ─── Tokens ──────────────────────────────────────────────────────────
@@ -53,6 +54,9 @@ class AppColors {
   final Color overlayFill;
   final Color overlayStroke;
 
+  // ─── Attach scanner ──────────────────────────────────────────────────
+  final Color cameraScannerBackground;
+
   // ─── Light palette ───────────────────────────────────────────────────
   static const light = AppColors._(
     green: Color(0xFF005548),
@@ -78,6 +82,7 @@ class AppColors {
     white: Colors.white,
     overlayFill: Color(0x14FFFFFF),
     overlayStroke: Color(0x24FFFFFF),
+    cameraScannerBackground: Color(0xFF000000),
   );
 
   // ─── Dark palette ────────────────────────────────────────────────────
@@ -104,6 +109,7 @@ class AppColors {
     white: Colors.white,
     overlayFill: Color(0x14FFFFFF),
     overlayStroke: Color(0x24FFFFFF),
+    cameraScannerBackground: Color(0xFF000000),
   );
 
   /// Convenience resolver.
@@ -122,4 +128,17 @@ class AppOpacity {
   static const double subtle = 0.70;
   static const double secondary = 0.75;
   static const double ripple = 0.08;
+  static const double attachSheetScrim = 0.35;
+  static const double attachSheetIconFill = 0.10;
+  static const double attachSheetBorder = 0.25;
+
+  // ─── Attach scanner ──────────────────────────────────────────────────
+  static const double attachSheetScannerSubtitle = 0.75;
+  static const double attachSheetScannerScrim = 0.70;
+  static const double attachSheetAddChatSubtitle = 0.70;
+
+  // ─── Focus timer ────────────────────────────────────────────────────────
+  static const double focusTimerPausedFill = 0.62;
+  static const double focusPopoverBorder = 0.18;
+  static const double focusPopoverShadow = 0.10;
 }
