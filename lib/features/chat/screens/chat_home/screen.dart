@@ -1,0 +1,10 @@
+import 'package:flutter/material.dart';
+
+class ChatHomeScreen extends StatelessWidget {
+  const ChatHomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(body: Center(child: Text('Chat home')));
+  }
+}
