@@ -5,6 +5,6 @@ class StudyProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Study profil')));
+    return const Scaffold(body: Center(child: Text('Study profile')));
   }
 }
